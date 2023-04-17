@@ -1,0 +1,68 @@
+<view class="container">
+  <swiper class="video-swiper" circular="{{circular}}" easing-function="{{easingFunction}}" vertical current="{{swiperCurrent}}" duration="{{duration}}" bindanimationfinish="animationfinish">
+    <!-- curQueue 循环会导致video重新插入，objectFit 不可变更 -->
+    <swiper-item wx:for="{{curQueue}}" wx:key="idxKey">
+      <video id="video_{{index}}" class="video" loop="{{loop}}" enable-progress-gesture show-center-play-btn="{{false}}" controls="{{false}}" src="{{item.url}}" data-id="{{item.id}}" object-fit="{{item.objectFit || 'cover'}}" data-index="{{index}}" bindplay="onPlay" bindpause="onPause" bindended="onEnded" binderror="onError" bindtimeupdate="onTimeUpdate" bindwaiting="onWaiting" bindprogress="onProgress" bindloadedmetadata="onLoadedMetaData" bind:tap="clickVideo">
+      </video>
+      <image class="img" wx:if="{{!videoBol[index]}}" data-index="{{index}}" data-id="{{item.id}}" bind:tap="clickVideo" src="../../../assets/images/home-play.png"></image>
+      <custom-slider class="custom-slider-{{index}}" bind:seekAndPlay="seekAndPlay" videoDuration="{{videoDuration}}" videoCuttentTime="{{videoCuttentTime}}" videoBolCur="{{videoBol[index]}}"></custom-slider>
+      <view class="video-cover">
+        <view class="right-panel">
+          <view style="position: relative;margin-bottom: 20px;">
+            <view class="user-photo">
+              <van-image width="45" height="45" round src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            </view>
+            <view class="follow-view" bindtap="onAttention" wx:if="{{!userHandleState.attention}}">
+              <van-icon class="{{attentionAnimate}}" bindanimationend="attentionAnimateEnd" name="{{attentionIcon}}" size="15" />
+            </view>
+          </view>
+          <view class="right-panel-cell" bindtap="tapLike">
+            <view style="height: 36px;display: flex;">
+              <van-icon class="right-panel-icon {{likeAnimate}}" color="{{userHandleState.like ? '#D05A6E' : ''}}" custom-style="margin:auto" name="like" />
+            </view>
+            <view class="right-panel-text">
+              17.4万
+            </view>
+          </view>
+          <view class="right-panel-cell" bindtap="tapChat">
+            <view style="height: 36px;display: flex;">
+              <van-icon class="right-panel-icon {{chatAnimate}}" custom-style="margin:auto;" name="chat" />
+            </view>
+            <view class="right-panel-text">
+              17.4万
+            </view>
+          </view>
+          <view class="right-panel-cell" bindtap="tapStar">
+            <view style="height: 36px;display: flex;">
+              <van-icon class="right-panel-icon {{ starAnimate }}" color="{{userHandleState.star ? '#F6C555' : ''}}" custom-style="margin:auto;" name="star" />
+            </view>
+            <view class="right-panel-text">
+              17.4万
+            </view>
+          </view>
+          <view class="right-panel-cell" bindtap="tapShare">
+            <view style="height: 36px;display:flex;">
+              <van-button custom-class="share-btn" open-type="share">
+                <van-icon class="right-panel-icon {{shareAnimate}}" custom-style="margin:auto;color:white;" name="share" />
+              </van-button>
+            </view>
+            <view class="right-panel-text">
+              17.4万
+            </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{lists}}" wx:key="*this">
+    <view class="item-{{index}}" style="position: absolute;left: {{hertPos.l}}px;top: {{hertPos.t}}px;transform: translate(-50%,-100%);" data-index="{{index}}">
+      <van-icon size="100" custom-class="hert-class" name="like" />
+    </view>
+  </block>
+  <van-popup show="{{ isChatPopup }}" position="bottom" round custom-style="height: 60%;z-index:99999" bind:close="onCloseChat">
+    <view style="text-align: center;line-height: 40px;">
+      754条评论
+    </view>
+  </van-popup>
+
+</view>

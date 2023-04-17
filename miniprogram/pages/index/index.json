@@ -1,0 +1,7 @@
+{
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "custom-slider":"./custom-slider/index",
+    "mp-video-swiper":"./video-swiper/index"
+  }
+}

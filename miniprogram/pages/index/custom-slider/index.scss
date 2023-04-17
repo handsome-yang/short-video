@@ -1,0 +1,33 @@
+/* pages/short-video/custom-slider/index.wxss */
+.slider-container {
+  position: absolute;
+  z-index: 999;
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  left: 0;
+  bottom: calc(100rpx + env(safe-area-inset-bottom));
+
+  .custom-button {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .custom-slider-5 {
+    height: 5px !important;
+  }
+
+  .custom-slider-15 {
+    height: 15px !important;
+  }
+}
+
+.video-duration {
+  position: absolute;
+  left: 50%;
+  color: white;
+  font-size: 36rpx;
+  transform: translateX(-50%);
+  bottom: calc(200rpx + env(safe-area-inset-bottom));
+}

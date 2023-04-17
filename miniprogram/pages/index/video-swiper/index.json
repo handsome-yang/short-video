@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+      "custom-slider":"../custom-slider/index"
+    }
+}

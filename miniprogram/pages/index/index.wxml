@@ -1,0 +1,7 @@
+<!--pages/short-video/index.wxml-->
+<!-- http://175.102.133.138/short-video/ces.mp4 -->
+<view style="height: 100vh;width: 100vw;position: relative;">
+  <mp-video-swiper id="mp-video-swiper" enable-play-gesture="{{false}}" index="{{current_index}}" video-list="{{videoList}}" user-handle-state="{{handleState}}" binderror="onError" bindwaiting="onWaiting" bindUpdataVideo="onUpdataVideo" bindchange="swiperChange" bind:tapLike="tapLike" bind:tapChat="tapChat" bind:tapStar="tapStar" bind:tapShare="tapShare" bind:tapAttention="tapAttention">
+  </mp-video-swiper>
+
+</view>

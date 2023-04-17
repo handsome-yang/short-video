@@ -1,0 +1,10 @@
+<!--pages/short-video/custom-slider/index.wxml-->
+<view class="video-duration" wx:if="{{isSpeed}}">
+  {{videoTimeTips.current + " / " + videoTimeTips.end}}
+</view>
+<view class='slider-container'>
+  <van-slider value="{{processBarPercent}}" custom-class="{{isSpeed ? 'custom-slider-15' : 'custom-slider-5'}}" use-button-slot active-color="{{processBar.activeColor}}" inactive-color="{{processBar.inactiveColor}}" bind:drag="onDrag" bind:drag-start="onDragStart" bindtouchmove="touchmoveprocess" bindtouchend="touchEndProcess" bindtouchstart="touchStartProcess" bind:change="dragValChange">
+    <view class="custom-button" style="width: {{processBar.slidingBlock}};height: {{processBar.slidingBlock}};" slot="button">
+    </view>
+  </van-slider>
+</view>
